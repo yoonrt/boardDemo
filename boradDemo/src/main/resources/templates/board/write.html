@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<th:block layout:fragment="title">
+		<title>글쓰기 페이지</title>
+	</th:block>
+	<th:block layout:fragment="content">
+		<div>
+			<form th:action = "@{/board/register.do}" th:object="${board}" method="post">
+				<input type = "hidden" th:if="*{Idx != null and Idx > 0}" th:field="*{Idx}"/>
+				<div>
+					<label for="title">제목</label>
+					<input type="text" th:field="*{title}"/>
+					<label for="content">내용</label>
+					<textarea th:field="*{content}"></textarea>
+					<div>
+						<button type="submit">저장</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</th:block>
+</html>
